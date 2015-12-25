@@ -22,7 +22,7 @@ $.qp.ar = (function($$module){
 			AR_CLASS_GROUPINDEX: "ar-groupIndex",
 			AR_CLASS_RINDEX: "ar-rIndex",
 			AR_CLASS_GROUPID: "ar-groupId",
-			ARR_REINDEX_ATTRIBUTES : ["name","id","for"]
+			ARR_REINDEX_ATTRIBUTES : ["name","id","for","href"]
 	};
 	$$module.CONST=CONST;
 	$$module.addRow = function(param) {
@@ -256,6 +256,9 @@ $.qp.ar = (function($$module){
 		}
 		var regex = /\[\d*\]/g;
 		
+		if(!CONST.ARR_REINDEX_ATTRIBUTES){
+			CONST.ARR_REINDEX_ATTRIBUTES = ["name"];
+		}
 		var attributesName;
 		for(var i=0;i<CONST.ARR_REINDEX_ATTRIBUTES.length;i++){
 			attributesName = (attributesName?attributesName+", ":"") + "[" +CONST.ARR_REINDEX_ATTRIBUTES[i]+"*='[']["+CONST.ARR_REINDEX_ATTRIBUTES[i]+"*='].']";
@@ -266,11 +269,9 @@ $.qp.ar = (function($$module){
 							if(i>=ignoreRows) {
 								var replacements = [];
 								var tempTable = $container;
-								if(!CONST.ARR_REINDEX_ATTRIBUTES){
-									CONST.ARR_REINDEX_ATTRIBUTES = ["name"];
-								}
+								
 								for(var j=tableTreeLevel-1;j>-1;j--) {
-									tempTable=$(tempTable).parents("table:first");
+									tempTable=$(tempTable).parents("[data-ar-tlevel="+j+"]:first");
 									replacements[j] ='[' + tempTable.parents("tr:first").attr(CONST.ATTR_ROW_INDEX)+ ']';
 								}
 								$(this)	.find(attributesName)

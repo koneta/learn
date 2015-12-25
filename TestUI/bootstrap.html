@@ -13,13 +13,47 @@
       <script type="text/javascript">
         $(document).ready(function(){
           $('[data-submenu]').submenupicker()
+          $('.qp-menu-primary').affix(
+            {
+              offset : {
+                top : $('.com-header-info-panel').height()
+                    + $('.qp-menu-primary').height()
+              }
+            });
+         
+
+          $(".toggle-area").each(function(){
+            var $toggleArea = $(this);
+            $toggleArea.find(".toggle-button").click(function(){
+              $toggleArea.find(".toggle-dropdown").toggle();
+            });
+          });
+          $('body').on('click', function (e) {
+              var closestToggerArea = $(e.target).closest(".toggle-area");
+              $('.toggle-area').not(closestToggerArea).each(function(){
+                $(this).find(".toggle-dropdown").hide();
+              });
+               
+              
+          });
         });
     </script>
+    <style type="text/css">
+      .toggle-area{
+        overflow:visible;
+        display: inline-block;
+
+      }
+      .toggle-area .toggle-dropdown {
+        position: absolute;
+        display : none;
+      }
+    </style>
   </head>
 
   <body>
     <h3>Horizontal navbar</h3>
-    <div class="navbar navbar-default">
+    <div class="navbar navbar-default navbar-horizontal">
       <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -35,7 +69,7 @@
         <ul class="nav navbar-nav">
           <li class="dropdown">
             <a tabindex="0" data-toggle="dropdown" data-submenu>
-              Dropdown<span class="caret"></span>
+              Dropdown
             </a>
 
             <ul class="dropdown-menu">
@@ -82,7 +116,7 @@
           </li>
           <li class="dropdown">
             <a tabindex="0" data-toggle="dropdown" data-submenu>
-              Dropdown 2<span class="caret"></span>
+              Dropdown 2
             </a>
             <ul class="dropdown-menu">
               <li class="dropdown-submenu">
@@ -114,23 +148,76 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a tabindex="0" data-toggle="dropdown">
-              Dropdown 3<span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="0">Action</a></li>
-              <li><a tabindex="0">Another action</a></li>
-              <li><a tabindex="0">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a tabindex="0">Separated link</a></li>
-            </ul>
-          </li>
-        </ul>
+       
       </div>
     </div>
+    <div class="toggle-area">
+      <button class="btn btn-default glyphicon glyphicon-align-justify toggle-button"></button>
+      <div class="navbar navbar-default navbar-vertical toggle-dropdown">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
+          <a class="navbar-brand">Project Name</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a tabindex="0" data-toggle="dropdown" data-submenu>
+                Dropdown
+              </a>
+
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <a tabindex="0">Action</a>
+
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="0">Sub action</a></li>
+                    <li class="dropdown-submenu">
+                      <a tabindex="0">Another sub action</a>
+
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="0">Sub action</a></li>
+                        <li><a tabindex="0">Another sub action</a></li>
+                        <li><a tabindex="0">Something else here</a></li>
+                      </ul>
+                    </li>
+                    <li><a tabindex="0">Something else here</a></li>
+                    <li class="dropdown-submenu">
+                      <a tabindex="0">Another action</a>
+
+                      <ul class="dropdown-menu">
+                        <li><a tabindex="0">Sub action</a></li>
+                        <li><a tabindex="0">Another sub action</a></li>
+                        <li><a tabindex="0">Something else here</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                  <a tabindex="0">Another action</a>
+
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="0">Sub action</a></li>
+                    <li><a tabindex="0">Another sub action</a></li>
+                    <li><a tabindex="0">Something else here</a></li>
+                  </ul>
+                </li>
+                <li><a tabindex="0">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="0">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <h3>Vertical navbar</h3>
     <div class="navbar navbar-default navbar-vertical" style="width:200px">
       <div class="navbar-header">
@@ -152,7 +239,7 @@
             </a>
 
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="dropdown-submenu">
+              <li class="dropdown dropdown-submenu">
                 <a tabindex="0">Action</a>
 
                 <ul class="dropdown-menu">
@@ -229,14 +316,198 @@
         </ul>
       </div>
     </div>
+ 
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p><p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+    <p>heaven</p>
+
     <script type="text/javascript">
-      function hell(){
-      alert("hell");
+      function heaven(){
+      alert("heaven");
     }
       $(document).ready(function(){
-        alert("hello");
+        //alert("heaveno");
       });
     </script>
-    <a  onclick="hell()">Run JavaScript Code</a>
+    <a  onclick="heaven()">Run JavaScript Code</a>
   </body>
 </html>
