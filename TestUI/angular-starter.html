@@ -100,7 +100,7 @@
 		<script src="angular.js" type="text/javascript"></script>
 		<script src="angular-router.js" type="text/javascript"></script>
 		<script type="text/javascript">
-       		var myApp = angular.module('myApp', []);
+       		var myApp = angular.module('myApp', []).controller("main", main);
 			function main($scope, $http){
 			  
 			  $scope.data = [

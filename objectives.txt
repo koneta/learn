@@ -1,0 +1,4 @@
+1. Angular JS (Front End)
+2. Java, Spring, Hibernate (Back End)
+3.  JUnit (Testing)
+4. Jenkins and Ant (Integration and Building)
