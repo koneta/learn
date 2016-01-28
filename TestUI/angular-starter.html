@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="bootstrap.css">
+	    <link rel="stylesheet" href="bootstrap-theme.css">
+	    <script src="jquery.js" type="text/javascript"></script>
+		<script src="bootstrap.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+		<div class="container" ng-app="myApp" ng-controller="main">
+		     <h3>Angular Starter With Data List and Modals</h3>
+
+		    <ul class="list-unstyled">
+		        <li data-ng-repeat="item in data track by $index">
+		            <label label-default="" class="customLabel" id="{{item.id}}"><a href="" ng-click="setSelectedItem($index)" data-toggle="modal" data-target="#detailsModal">{{item.title}} - {{item.category_name}}</a>
+		            </label>
+		            <div class="pull-right actions"> <a href="" class="trash" data-toggle="modal" data-target="#deleteModal" ng-click="setSelectedItem($index)">x</a>
+		            </div>
+		        </li>
+		    </ul>
+		    <div id="detailsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		        <div class="modal-dialog modal-sm">
+		            <div class="modal-content"></div>
+		        </div>
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+		                    </button>
+		                     <h4 class="modal-title">{{data[selectedItem].title}} Details</h4>
+		                </div>
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+		                    </button>
+		                     <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="modalMsg">
+		                        <p>id:{{data[selectedItem].id}} - {{data[selectedItem].desc}}</p>
+		                    </div>
+		                    <div class="actionsBtns">
+		                        <button class="btn btn-default" data-dismiss="modal">OK</button>
+		                    </div>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="modalMsg">
+		                        <p>Are you sure want to remove item #{{selectedItem+1}}?</p>
+		                    </div>
+		                    <div class="actionsBtns">
+		                        <button class="btn btn-default" ng-click="deleteItem()" data-dismiss="modal">Yes</button>
+		                        <button class="btn btn-default" data-dismiss="modal">No</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <!--/modal-->
+		    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		        <div class="modal-dialog modal-sm">
+		            <div class="modal-content"></div>
+		        </div>
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+		                    </button>
+		                    <input type="text" name="name" class="form-control" ng-model="data[selectedItem].title">
+		                    <h4 class="modal-title">{{data[selectedItem].title}} Details</h4>
+
+		                </div>
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+		                    </button>
+		                     <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+
+		                </div>
+		                <div class="modal-body">
+		                    <div class="modalMsg">
+		                        <p>id:{{data[selectedItem].id}} - {{data[selectedItem].desc}}</p>
+		                    </div>
+		                    <div class="actionsBtns">
+		                        <button class="btn btn-default" data-dismiss="modal">OK</button>
+		                    </div>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="modalMsg">
+		                        <p>Are you sure want to remove item #{{selectedItem+1}}?</p>
+		                    </div>
+		                    <div class="actionsBtns">
+		                        <button class="btn btn-default" ng-click="deleteItem()" data-dismiss="modal">Yes</button>
+		                        <button class="btn btn-default" data-dismiss="modal">No</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		    <!--/modal-->
+		</div>
+		<!--/container-->
+		<script src="angular.js" type="text/javascript"></script>
+		<script src="angular-router.js" type="text/javascript"></script>
+		<script type="text/javascript">
+       		var myApp = angular.module('myApp', []).controller("main", main);
+			function main($scope, $http){
+			  
+			  $scope.data = [
+			   {id:1, title:'Foo', desc:'More stuff about this here', category_name:'Category 1'},
+			   {id:2, title:'Goo', desc:'More stuff about this here', category_name:'Category 2'},
+			   {id:3, title:'Roo', desc:'Blah details on Roo are here', category_name:'Category 1'},
+			   {id:4, title:'Hoo', desc:'More stuff about Hoo here', category_name:'Category 2'},
+			   {id:5, title:'Woo', desc:'More stuff about this here', category_name:'Category 3'}
+			  ];
+			  
+			  $scope.setSelectedItem = function(i){
+			    $scope.selectedItem = i;
+			  }
+			  
+			  $scope.deleteItem = function(){
+			    if ($scope.selectedItem >= 0) {
+			    	$scope.data.splice($scope.selectedItem,1);
+			    }
+			  }
+			}
+        </script>
+	</body>
+</html>
